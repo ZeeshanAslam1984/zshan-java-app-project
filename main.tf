@@ -8,37 +8,31 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region  # Change to your desired region
+  region = var.aws_region
 }
 
-# Fetch latest Amazon Linux 2023 AMI for your region
-data "aws_ami" "amazon_linux" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["amzn2023-ami-kernel-6.1-hvm-*-x86_64*"]
-  }
+# Using region-correct Amazon Linux 2023 x86_64 AMI
+locals {
+  amazon_linux_ami = "ami-052064a798f08f0d3"
 }
 
 module "nexus_instance" {
   source        = "./ec2_instance"
-  ami           = data.aws_ami.amazon_linux.id
+  ami           = local.amazon_linux_ami
   instance_type = var.aws_type
   instance_name = "nexus-server"
 }
 
 module "sonar_instance" {
   source        = "./ec2_instance"
-  ami           = data.aws_ami.amazon_linux.id
+  ami           = local.amazon_linux_ami
   instance_type = var.aws_type
   instance_name = "sonar-server"
 }
 
 module "test_instance" {
   source        = "./ec2_instance"
-  ami           = data.aws_ami.amazon_linux.id
+  ami           = local.amazon_linux_ami
   instance_type = var.aws_type
   instance_name = "test-server"
 }
