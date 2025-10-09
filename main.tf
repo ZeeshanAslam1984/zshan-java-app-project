@@ -15,20 +15,20 @@ module "nexus_instance" {
   source       = "./ec2_instance"
   ami          = var.aws_ami  # Example AMI ID, replace with your desired AMI
   instance_type = var.aws_type             # Example instance type, replace with your desired type
-  instance_name = "nexus-server"
+  instance_name = "Nexus-Server-KG"
 }
 
 module "sonar_instance" {
   source       = "./ec2_instance"
   ami          = var.aws_ami  # Example AMI ID, replace with your desired AMI
   instance_type = var.aws_type              # Example instance type, replace with your desired type
-  instance_name = "sonar-server"
+  instance_name = "Sonar-S-KGerver"
 }
 
 module "test_instance" {
   source       = "./ec2_instance"
   ami          = var.aws_ami  # Example AMI ID, replace with your desired AMI
   instance_type = var.aws_type              # Example instance type, replace with your desired type
-  instance_name = "test-server"
+  instance_name = "Test-Server-KG"
 
 }
