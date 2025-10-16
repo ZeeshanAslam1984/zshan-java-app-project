@@ -1,7 +1,7 @@
 # Application.yaml
 apiVersion: apps/v1
 kind: Deployment
-meta
+metadata:
   name: zshan-java-app
   labels:
     app: zshan-java-app
