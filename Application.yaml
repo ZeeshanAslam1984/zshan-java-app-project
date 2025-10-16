@@ -11,7 +11,7 @@ spec:
     matchLabels:
       app: zshan-java-app
   template:
-    meta
+    metadata:
       labels:
         app: zshan-java-app
     spec:
@@ -26,7 +26,7 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-meta
+metadata:
   name: zshan-java-app-svc
 spec:
   type: LoadBalancer
